@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}User Sign IN{% endblock title %}
+
+{% block styles %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendor/bootstrap/dist/css/bootstrap.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='vendor/perfect-scrollbar/css/perfect-scrollbar.css') }}">
+{% endblock styles %}
+
+{% block content %}
+
+  <div class="app layout-fixed-header bg-white usersession">
+    <div class="full-height">
+      <div class="center-wrapper">
+        <div class="center-content">
+          <div class="row no-margin">
+            <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+              <form role="form" action="/" class="form-layout">
+                <div class="text-center mb15">
+                  <img src="{{ url_for('static', filename='images/logo-dark.png') }}" />
+                </div>
+                <p class="text-center mb30">Welcome to Urban. Please sign in to your account</p>
+                <div class="form-inputs">
+                  <input type="email" class="form-control input-lg" placeholder="Email Address">
+                  <input type="password" class="form-control input-lg" placeholder="Password">
+                </div>
+                <button class="btn btn-success btn-block btn-lg mb15" type="submit">
+                  <span>Sign in</span>
+                </button>
+                <p>
+                  <a href="extras-signup.html">Create an account</a> ·
+                  <a href="extras-forgot.html">Forgot your password?</a>
+                </p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock content %}
+
+{% block scripts %}
+  <script src="{{ url_for('static', filename='vendor/jquery/dist/jquery.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/bootstrap/dist/js/bootstrap.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/jquery.easing/jquery.easing.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/fastclick/lib/fastclick.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/onScreen/jquery.onscreen.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/jquery-countTo/jquery.countTo.js') }}"></script>
+  <script src="{{ url_for('static', filename='vendor/perfect-scrollbar/js/perfect-scrollbar.jquery.js') }}"></script>
+{% endblock scripts %}

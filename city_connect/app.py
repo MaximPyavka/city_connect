@@ -46,13 +46,14 @@ assets.register('js_all', js)
 
 # application routes
 from city_connect.views.index import Index, TEST_500
+from city_connect.views.user.user_view import User
 
 index_view = Index.as_view('index')
 app.add_url_rule('/', view_func=index_view, methods=['GET'])
 
-
 app.add_url_rule('/test-500', view_func=TEST_500.as_view("test-500"), methods=['GET'])
 
+app.add_url_rule('/sign-in', view_func=User.as_view("sign-in"), methods=['GET'])
 
 # api urls
 from city_connect.resources.hello_world import HelloWorld
