@@ -21,7 +21,7 @@ module.exports = function (grunt) {
     app: require('./bower.json').appPath || 'app',
     name: require('./bower.json').name || 'app',
     dist: './../city_connect/static',
-    extras: './../city_connect/dist'
+    extras: './../city_connect/extras'
   };
 
   // Define the configuration for all the tasks
