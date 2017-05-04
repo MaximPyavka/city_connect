@@ -4,6 +4,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from city_connect.config import runtime_config
+from flask_assets import Environment, Bundle
 
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -20,6 +21,25 @@ db = SQLAlchemy(app)
 
 with app.app_context():
     db.create_all()
+
+assets = Environment(app)
+
+# create and register assets
+css = Bundle(
+    'styles/*.css',
+    filters='cssmin',
+    # output='styles/main.min.css'
+)
+
+js = Bundle(
+    'scripts/*.js',
+    'scripts/**/*.js',
+    filters='jsmin',
+    # output='styles/main.min.js'
+)
+
+assets.register('css_all', css)
+assets.register('js_all', js)
 
 
 # application routes

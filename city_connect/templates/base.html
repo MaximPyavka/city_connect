@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock title %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" type="text/css"/>
+
+    {% assets "css_all" %}
+    <link rel="stylesheet" href="{{ ASSET_URL }}" type="text/css" />
+    {% endassets %}
+
     {% block styles %}
     {% endblock styles %}
 </head>
@@ -13,7 +17,9 @@
     {% endblock content %}
 
 <!-- JavaScript -->
-<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% assets "js_all" %}
+<script type="text/javascript" src="{{ ASSET_URL }}"></script>
+{% endassets %}
 {% block scripts %}
 {% endblock scripts %}
 
