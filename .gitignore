@@ -131,3 +131,10 @@ venv
 
 # log files
 *.log
+
+
+# Cruft
+.DS_Store
+npm-debug.log
+.idea
+npm-debug.log.*
