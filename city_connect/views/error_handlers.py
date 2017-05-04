@@ -2,9 +2,7 @@ from flask import render_template
 
 
 def page_not_found(e):
-    error = {'title': '404 Not Found',
-             'message': 'Error 404, Page Not Found'}
-    return render_template('error_handler.html', error=error), 404
+    return render_template('errors/error_404.html'), 404
 
 
 def forbidden(e):
@@ -20,6 +18,4 @@ def gone(e):
 
 
 def internal_server_error(e):
-    error = {'title': '500 Internal Server Error',
-             'message': 'Error 500, Forbidden'}
-    return render_template('error_handler.html', error=error), 500
+    return render_template('errors/error_500.html'), 500

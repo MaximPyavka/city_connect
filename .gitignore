@@ -131,6 +131,7 @@ venv
 
 # log files
 *.log
+*.log.*
 
 
 # Cruft

@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from city_connect.config import runtime_config
 from flask_assets import Environment, Bundle
+from flask_restful import Api
 
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -21,6 +22,8 @@ db = SQLAlchemy(app)
 
 with app.app_context():
     db.create_all()
+
+api = Api(app, prefix='/api/v1')
 
 assets = Environment(app)
 
@@ -47,6 +50,11 @@ from city_connect.views.index import Index
 
 index_view = Index.as_view('index')
 app.add_url_rule('/', view_func=index_view, methods=['GET'])
+
+
+# api urls
+from city_connect.resources.hello_world import HelloWorld
+api.add_resource(HelloWorld, '/')
 
 
 # error handlers
