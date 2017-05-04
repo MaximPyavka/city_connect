@@ -7,6 +7,7 @@
   -  [tutorial](https://tutorial.djangogirls.org/ru/django_installation/) (NO need to install django)
   -  [stackoverflow.com](http://stackoverflow.com/questions/23842713/using-python-3-in-virtualenv)
   -  [official docs](https://virtualenv.pypa.io/en/stable/installation/)
+  -  [tutorial](https://www.8host.com/blog/ustanovka-python-3-i-nastrojka-sredy-razrabotki-na-servere-ubuntu-16-04/)
 
 - After installation activate your virtualnenv:
   #### Linux
