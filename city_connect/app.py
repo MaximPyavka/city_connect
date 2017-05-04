@@ -28,14 +28,14 @@ assets = Environment(app)
 css = Bundle(
     'styles/*.css',
     filters='cssmin',
-    # output='styles/main.min.css'
+    output='styles/tmp/main.min.css'
 )
 
 js = Bundle(
     'scripts/*.js',
     'scripts/**/*.js',
     filters='jsmin',
-    # output='styles/main.min.js'
+    output='scripts/tmp/main.min.js'
 )
 
 assets.register('css_all', css)

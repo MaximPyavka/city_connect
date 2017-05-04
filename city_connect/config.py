@@ -11,7 +11,7 @@ class BaseConfig(object):
     DEBUG_TB_ENABLED = False
     DEBUG_TB_INTERCEPT_REDIRECTS = False
     STATIC_FOLDER = os.path.join(BASE_DIR, 'static')
-    ASSETS_DEBUG = True
+    ASSETS_DEBUG = False
 
 
 class DevelopmentConfig(BaseConfig):
@@ -20,6 +20,7 @@ class DevelopmentConfig(BaseConfig):
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, 'dev.sqlite')
     DEBUG_TB_ENABLED = True
     SQLALCHEMY_TRACK_MODIFICATIONS = True
+    ASSETS_DEBUG = True
 
 
 class TestingConfig(BaseConfig):

@@ -138,3 +138,7 @@ venv
 npm-debug.log
 .idea
 npm-debug.log.*
+
+# generated static
+city_connect/static/styles/tmp
+city_connect/static/scripts/tmp
