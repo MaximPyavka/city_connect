@@ -2,7 +2,6 @@ import os
 
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager
 from city_connect.config import runtime_config
 from flask_assets import Environment, Bundle
 from flask_restful import Api
@@ -46,10 +45,13 @@ assets.register('js_all', js)
 
 
 # application routes
-from city_connect.views.index import Index
+from city_connect.views.index import Index, TEST_500
 
 index_view = Index.as_view('index')
 app.add_url_rule('/', view_func=index_view, methods=['GET'])
+
+
+app.add_url_rule('/test-500', view_func=TEST_500.as_view("test-500"), methods=['GET'])
 
 
 # api urls

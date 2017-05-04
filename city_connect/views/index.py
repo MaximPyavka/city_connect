@@ -10,8 +10,11 @@ logging.config.dictConfig(LOGGING)
 
 
 class Index(BaseMethodView):
-
     def get(self):
         logging.debug('Get.Index template.')
-        # return abort(500)
         return render_template('index.html')
+
+
+class TEST_500(BaseMethodView):
+    def get(self):
+        return abort(500)
