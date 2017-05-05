@@ -1,6 +1,6 @@
 from flask import render_template
-
 from city_connect.views.base_view import BaseMethodView
+
 
 
 class UserSignIn(BaseMethodView):
