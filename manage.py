@@ -1,6 +1,6 @@
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
-from city_connect.models.models import User
+from city_connect.models.user import User
 from datetime import datetime
 from city_connect.app import app, db
 
