@@ -1,13 +1,12 @@
+import city_connect.models.user
+
 from city_connect.views.base_view import BaseMethodView
-#from city_connect import *
-from city_connect.models.user import User
 
 
 class BaseUsersView(BaseMethodView):
-
     @staticmethod
     def verify_user(form):
-        user = User.query.filter_by(login=form.login.data).first()
+        user = city_connect.models.user.User.query.filter_by(login=form.login.data).first()
         if user is not None and user.verify_password(form.password.data):
             return True, user
         return False, user
