@@ -18,3 +18,4 @@ class Index(BaseMethodView):
 class TEST_500(BaseMethodView):
     def get(self):
         return abort(500)
+
