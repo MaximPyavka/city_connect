@@ -57,7 +57,7 @@ app.add_url_rule('/', view_func=index_view, methods=['GET'])
 app.add_url_rule('/test-500', view_func=TEST_500.as_view("test-500"), methods=['GET'])
 
 app.add_url_rule('/sign-in', view_func=UserSignIn.as_view("sign-in"), methods=['GET'])
-app.add_url_rule('/sign-up', view_func=UserSignUp.as_view("sign-up"), methods=['GET'])
+app.add_url_rule('/sign-up', view_func=UserSignUp.as_view("sign-up"), methods=['GET', 'POST'])
 
 # api urls
 from city_connect.resources.hello_world import HelloWorld
