@@ -265,6 +265,33 @@ class TestUserModel(BaseTestCase):
             self.assertTrue(data['message'] == 'Token blacklisted. Please log in again.')
             self.assertEqual(response.status_code, 401)
 
+    def test_valid_blacklisted_token_user(self):
+        """ Test for user status with a blacklisted valid token """
+        with self.client:
+            resp_register = self.client.post(
+                'api/v1/auth/register',
+                data=json.dumps(dict(
+                    email='joe@gmail.com',
+                    password='123456',
+                    login='joe'
+                )),
+                content_type='application/json'
+            )
+            # blacklist a valid token
+            blacklist_token = BlacklistToken(token=json.loads(resp_register.data.decode())['auth_token'])
+            db.session.add(blacklist_token)
+            db.session.commit()
+            response = self.client.get(
+                'api/v1/auth/status',
+                headers=dict(
+                    Authorization=json.loads(resp_register.data.decode())['auth_token']
+                )
+            )
+            data = json.loads(response.data.decode())
+            self.assertEqual(data['success'], False)
+            self.assertTrue(data['message'] == 'Token blacklisted. Please log in again.')
+            self.assertEqual(response.status_code, 401)
+
     def _create_user(self):
         user = User(
             email='test@test.com',
