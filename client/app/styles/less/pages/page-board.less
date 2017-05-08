@@ -1,0 +1,95 @@
+// .app, .main-panel{
+// 	background-color: white;
+// }
+.header-name{
+			font-size: 24px;
+			margin: 0;	
+			padding: 15px 0 0 15px;	
+		}
+.main-content-header{
+	border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+	margin-bottom: 10px;	
+	.header-flex{
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		margin-bottom: 10px;
+		.header-filters{	
+		padding-top: 5px;		
+			span{
+				color: #707070;
+				font-size: 12px;
+				font-weight: bold;			
+			}
+			a{
+				color: #3b73af;
+				margin-right: 5px;
+				padding: 7px 10px;
+				border: 1px solid transparent;
+				&:hover{
+					border: 1px solid;
+					border-radius: 3px;				
+				}
+			}
+		}
+		.header-nav{
+			.header-time{
+				margin-right: 20px;				
+			}
+			.header-button{
+				font-size: 5px;
+				border-radius: 5px;
+			}
+		}		
+	}
+	
+}
+
+.main-content-wigets{
+	display: flex;	
+	.widget-task-wrap{	
+		width: 1000px;
+		flex-shrink: 1;	
+		margin: 0 5px;	
+		h2{
+			font-size: 14px;
+			background-color: rgb(240, 240, 240);
+			margin: 0;
+			padding: 20px 0 10px 0;			
+		}	
+		.widget-task{
+			min-height: 86px;			
+			padding: 0;
+			margin: 0;
+			.issue{
+				min-height: 76px;
+				border: 1px solid #3572b0;
+				border-radius: 5px;
+				margin: 5px;
+				padding: 10px 7px;
+				h3{
+						font-size: 14px;
+						margin: 0 0 14px 0;
+					}
+				.issue-flex{
+					display: flex;
+					justify-content: space-between;
+					i{
+						color: orange;
+						font-size: 14px;
+					}
+					span{
+						color: #808080;					
+					}
+					.issue-photo{
+						border-radius: 50%;
+						height: 25px;					
+					}
+				}
+							
+			}
+		}
+	}
+	
+}
+
