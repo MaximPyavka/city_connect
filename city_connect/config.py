@@ -12,6 +12,7 @@ class BaseConfig(object):
     DEBUG_TB_INTERCEPT_REDIRECTS = False
     STATIC_FOLDER = os.path.join(BASE_DIR, 'static')
     ASSETS_DEBUG = False
+    JSONIFY_MIMETYPE = 'application/json'
 
 
 class DevelopmentConfig(BaseConfig):
