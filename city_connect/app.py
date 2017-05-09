@@ -71,8 +71,8 @@ from city_connect.views.task.task import (
 )
 
 task_view = Task.as_view('task')
+app.add_url_rule('/task', view_func=task_view, methods=['GET', 'POST'])
 app.add_url_rule('/task/<int:task_id>', view_func=task_view, methods=['GET'])
-app.add_url_rule('/task/<int:user_id>', view_func=task_view, methods=['POST'])
 
 # api urls
 from city_connect.resources.user.user import (

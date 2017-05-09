@@ -10,13 +10,15 @@ class Task(db.Model):
     title = db.Column(db.String, unique=True, nullable=False)
     description = db.Column(db.String, unique=True, nullable=False)
     created = db.Column(db.DateTime, nullable=False)
-    user_id = db.Column('user_id', db.Integer, db.ForeignKey('users.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    image_url = db.Column(db.String, unique=True, nullable=True)
 
-    def __init__(self, title, user_id, description=''):
+    def __init__(self, title, user_id, description='', image_url=''):
         self.title = title
         self.created = datetime.datetime.now()
         self.description = description
-        self.user_id= user_id
+        self.user_id = user_id
+        self.image_url = image_url
 
     def __str__(self):
         return "ID: {}, TITLE: {}, CREATED: {}, BY: {}".format(self.id,

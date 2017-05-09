@@ -14,13 +14,14 @@ manager.add_command('db', MigrateCommand)
 def create_admin():
     """Creates the admin user"""
     db.session.add(User(
-        email = "ad@min.com",
-        password = "admin",
-        admin = True,
-        confirmed = True,
-        confirmed_on = datetime.now())
+        email="ad@min.com",
+        password="admin",
+        admin=True,
+        confirmed=True,
+        confirmed_on=datetime.now())
     )
     db.session.commit()
+
 
 @manager.command
 def create_db():
@@ -32,6 +33,14 @@ def create_db():
 def drop_db():
     """Drops the db tables."""
     db.drop_all()
+
+
+@manager.command
+def run_dev():
+    db.drop_all()
+    db.create_all()
+    create_admin()
+    app.run()
 
 
 if __name__ == '__main__':

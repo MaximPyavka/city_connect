@@ -13,6 +13,9 @@ class BaseConfig(object):
     STATIC_FOLDER = os.path.join(BASE_DIR, 'static')
     ASSETS_DEBUG = False
     JSONIFY_MIMETYPE = 'application/json'
+    UPLOAD_FOLDER = BASE_DIR + '/media/uploads'
+    ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
+    MAX_CONTENT_LENGTH = 16 * 1024 * 1024
 
 
 class DevelopmentConfig(BaseConfig):
