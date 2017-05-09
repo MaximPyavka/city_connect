@@ -294,9 +294,7 @@ class TestUserModel(BaseTestCase):
 
     def _create_user(self):
         user = User(
-            email='test@test.com',
-            password='test',
-            login="test_user",
+            phone_number='09311111111',
         )
         db.session.add(user)
         db.session.commit()

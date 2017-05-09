@@ -10,7 +10,7 @@ from city_connect.models.black_list_token import BlacklistToken
 class User(db.Model):
     __tablename__ = "users"
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     login = db.Column(db.String, unique=True, nullable=True)
     email = db.Column(db.String, unique=True, nullable=True)
     password = db.Column(db.String, nullable=True)

@@ -67,15 +67,12 @@ app.add_url_rule('/sign-up', view_func=UserSignUp.as_view("sign-up"), methods=['
 app.add_url_rule('/login-check', view_func=LoginUserCheck.as_view("login-check"), methods=['GET'])
 
 # api urls
-from city_connect.resources.hello_world import HelloWorld
 from city_connect.resources.user.user import (
     UserLogin,
     UserRegister,
     UserLogout,
     UserStatus,
 )
-
-api.add_resource(HelloWorld, '/')
 
 api.add_resource(UserLogin, '/auth/login')
 api.add_resource(UserRegister, '/auth/register')
