@@ -10,18 +10,16 @@
 * **Method:**
   `POST`
   
-*  **URL Params**
+*  **BODY Params**
 {
-"login": "test_user",
-"email": "test@gmail.com",
-"password": "password"
+"phone": "380935786917"
 }
 
 * **Success Response:**
 {
-"message": "Successfully registered.",
-"success": true,
-"auth_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTQzMTUyNDEsImlhdCI6MTQ5NDMxNTIzNiwic3ViIjoxfQ.YCVYPNtpKn8nhK-Vpw0enArM37SqVWfjQW4zbk0LkNs"
+  "message": "Successfully registered.",
+  "phone_code": "3370",
+  "success": true
 }
 
 ### Login user
@@ -30,19 +28,17 @@
 * **Method:**
   `POST`
   
-*  **URL Params**
+*  **BODY Params**
 {
-"login": "test_user",
-"email": "test@gmail.com",
-"password": "password",
-"auth_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTQzMTUyNDEsImlhdCI6MTQ5NDMxNTIzNiwic3ViIjoxfQ.YCVYPNtpKn8nhK-Vpw0enArM37SqVWfjQW4zbk0LkNs"
+"phone_code": "3370",
+"phone": "380935786917"
 }
 
 * **Success Response:**
 {
   "message": "Successfully logged in.",
-  "success": true,
-  "auth_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0OTQzMTYwMjQsImlhdCI6MTQ5NDMxNjAxOSwic3ViIjoxfQ.8Ss7-plkasM11jfCAsO4L94FlMThxOgTC7KumGMvf1w"
+  "auth_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE0OTQzMjc4NTAsInN1YiI6MSwiaWF0IjoxNDk0MzI3ODQ1fQ.ll-HgbkzYt4NShf4qEyaMI1jqmE_x62jGPxcxQuRLPw",
+  "success": true
 }
 
 ### Status user

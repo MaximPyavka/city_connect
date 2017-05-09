@@ -16,8 +16,9 @@ class UserLogin(BaseResourceUser):
         try:
             # fetch the user data
             user = city_connect.models.user.User.query.filter_by(
-                email=post_data.get('email')).first()
-            if user and bcrypt.checkpw(post_data.get('password').encode(), user.password):
+                phone_number=post_data.get('phone'), phone_code=post_data.get('phone_code')
+            ).first()
+            if user:
                 auth_token = user.encode_auth_token(user.id)
                 if auth_token:
                     responseObject = {
@@ -25,6 +26,9 @@ class UserLogin(BaseResourceUser):
                         'message': 'Successfully logged in.',
                         'auth_token': auth_token.decode()
                     }
+                    user.phone_code = ""
+                    db.session.add(user)
+                    db.session.commit()
                     return self.make_response(responseObject, status=200)
             else:
                 responseObject = {
@@ -50,12 +54,11 @@ class UserRegister(BaseResourceUser):
         if not post_data:
             abort(400)
         # check if user already exists
-        user = city_connect.models.user.User.query.filter_by(email=post_data.get('email')).first()
+        user = city_connect.models.user.User.query.filter_by(phone_number=post_data.get('phone')).first()
         if not user:
             try:
-                data = dict(email=post_data.get('email'),
-                            password=post_data.get('password'),
-                            login=post_data.get('login')
+                data = dict(phone_number=post_data.get('phone'),
+                            phone_code=self.generate_phone_code()
                             )
                 user = self.create_user(**data)
                 # generate the auth token
@@ -63,7 +66,7 @@ class UserRegister(BaseResourceUser):
                 responseObject = {
                     'success': True,
                     'message': 'Successfully registered.',
-                    'auth_token': auth_token.decode()
+                    'phone_code': user.phone_code
                 }
                 return self.make_response(responseObject, status=201)
             except Exception as e:
@@ -74,10 +77,15 @@ class UserRegister(BaseResourceUser):
                 }
                 return self.make_response(responseObject, status=401)
         else:
+            phone_code = self.generate_phone_code()
             responseObject = {
-                'success': False,
+                'success': True,
                 'message': 'User already exists. Please Log in.',
+                'phone_code': phone_code
             }
+            user.phone_code = phone_code
+            db.session.add(user)
+            db.session.commit()
             return self.make_response(responseObject, status=202)
 
 
