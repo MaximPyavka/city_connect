@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from city_connect.config import runtime_config
 from flask_assets import Environment, Bundle
 from flask_restful import Api
+from flask_login import LoginManager
 
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -18,6 +19,8 @@ app = Flask(__name__)
 app.config.from_object(runtime_config(APP_STATUS))
 
 db = SQLAlchemy(app)
+
+login_manager = LoginManager(app)
 
 with app.app_context():
     db.create_all()
@@ -48,7 +51,8 @@ assets.register('js_all', js)
 from city_connect.views.index import Index, TEST_500
 from city_connect.views.user.user_view import (
     UserSignIn,
-    UserSignUp
+    UserSignUp,
+    LoginUserCheck
 )
 
 index_view = Index.as_view('index')
@@ -59,13 +63,16 @@ app.add_url_rule('/test-500', view_func=TEST_500.as_view("test-500"), methods=['
 app.add_url_rule('/sign-in', view_func=UserSignIn.as_view("sign-in"), methods=['GET'])
 app.add_url_rule('/sign-up', view_func=UserSignUp.as_view("sign-up"), methods=['GET', 'POST'])
 
+
+app.add_url_rule('/login-check', view_func=LoginUserCheck.as_view("login-check"), methods=['GET'])
+
 # api urls
 from city_connect.resources.hello_world import HelloWorld
 from city_connect.resources.user.user import (
     UserLogin,
     UserRegister,
     UserLogout,
-    UserStatus
+    UserStatus,
 )
 
 api.add_resource(HelloWorld, '/')

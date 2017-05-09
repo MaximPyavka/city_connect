@@ -1,6 +1,7 @@
 from flask import request
 from flask import render_template
 from city_connect.views.user.user_base import BaseUsersView
+from flask_login import current_user, login_required
 
 
 class UserSignIn(BaseUsersView):
@@ -17,3 +18,9 @@ class UserSignUp(BaseUsersView):
             print("================================")
             print(request.form.get(k))
         return render_template('user/signup.html')
+
+
+class LoginUserCheck(BaseUsersView):
+    @login_required
+    def get(self):
+        return "OK", 200
