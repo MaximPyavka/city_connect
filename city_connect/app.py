@@ -66,6 +66,14 @@ app.add_url_rule('/sign-up', view_func=UserSignUp.as_view("sign-up"), methods=['
 
 app.add_url_rule('/login-check', view_func=LoginUserCheck.as_view("login-check"), methods=['GET'])
 
+from city_connect.views.task.task import (
+    Task
+)
+
+task_view = Task.as_view('task')
+app.add_url_rule('/task/<int:task_id>', view_func=task_view, methods=['GET'])
+app.add_url_rule('/task/<int:user_id>', view_func=task_view, methods=['POST'])
+
 # api urls
 from city_connect.resources.user.user import (
     UserLogin,
