@@ -137,7 +137,6 @@ venv
 # Cruft
 .DS_Store
 npm-debug.log
-.idea
 npm-debug.log.*
 
 # generated static

@@ -11,12 +11,12 @@ from city_connect.app import app
 class Task(BaseTaskView):
     def get(self, task_id=None):
         if not task_id:
-            return render_template('task/task-details.html')
+            return render_template('task/create-task.html')
         task = self.get_task(task_id)
         if not task:
-            return render_template('task/task-details.html')
+            return render_template('task/create-task.html')
             # abort(400)
-        return render_template('task/task-details.html')
+        return render_template('task/create-task.html')
 
     def post(self):
         post_data = {
@@ -41,6 +41,10 @@ class Task(BaseTaskView):
         self.create_task(**post_data)
         return redirect(url_for('index'), 200)
 
+
+class DisplayTasks(BaseTaskView):
+    def get(self):
+        return render_template('task/task-details.html')
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
